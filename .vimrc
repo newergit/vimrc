@@ -21,6 +21,7 @@ inoremap { <c-r>=LeftPair('{','}')<CR>
 inoremap } <c-r>=RightPair('{','}')<CR>
 inoremap " <c-r>=LeftPair('"','"')<CR>
 inoremap ' <c-r>=LeftPair("'","'")<CR>
+inoremap ` <c-r>=LeftPair("`","`")<CR>
 inoremap <CR> <c-r>=EnterInBracket()<CR>
 
 function LeftPair(charL,charR)
