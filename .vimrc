@@ -3,13 +3,6 @@ set number
 set cindent
 set shiftwidth=4
 set cinoptions={0,1s,t0,n-2,p2s,(03s,=.5s,>1s,=1s,:1s		
-let g:clang_complete_copen=1
-let g:clang_periodic_quickfix=0
-let g:clang_snippets=1
-let g:clang_close_preview=1
-set completeopt=menu,longest
-let g:clang_use_library=1
-let g:clang_library_path="/usr/lib/llvm"
 
 
 inoremap <C-_> /**/<Esc>hi
