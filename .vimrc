@@ -26,10 +26,10 @@ inoremap <CR> <c-r>=EnterInBracket()<CR>
 function LeftPair(charL,charR)
  let line = getline('.')
  let col = col('.')
- if line[col - 2] == a:charL
+ "if line[col - 2] == a:charL
  "Escaping out of the string
- return "\<Right>"
- elseif match(line[col - 2],'[;]')==0
+ "return "\<Right>"
+ if match(line[col - 2],'[;]')==0
  return a:charL.a:charR."\<Esc>i"
  elseif match(line,'[^ \<CR>\<Tab>]')<0
  return a:charL.a:charR."\<Esc>i" 
