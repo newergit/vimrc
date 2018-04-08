@@ -22,20 +22,18 @@ inoremap } <c-r>=RightPair('{','}')<CR>
 inoremap " <c-r>=LeftPair('"','"')<CR>
 inoremap ' <c-r>=LeftPair("'","'")<CR>
 inoremap <CR> <c-r>=EnterInBracket()<CR>
+inoremap <BS> <c-r>=BackSpaceinBracket()<CR>
+
 
 function LeftPair(charL,charR)
  let line = getline('.')
  let col = col('.')
- "if line[col - 2] == a:charL
+ if line[col - 1] == a:charL
  "Escaping out of the string
- "return "\<Right>"
- if match(line[col - 2],'[;]')==0
- return a:charL.a:charR."\<Esc>i"
- elseif match(line,'[^ \<CR>\<Tab>]')<0
- return a:charL.a:charR."\<Esc>i" 
+ return "\<Right>"
  else
  "Starting a string
-  return a:charL
+ return a:charL.a:charR."\<Esc>i"
  endif
 endf
 
@@ -61,3 +59,12 @@ function EnterInBracket()
  endif
 endf
 
+function BackSpaceinBracket()
+ let line = getline('.')
+ let col = col('.')
+ if (line[col-2]=="{" && line[col-1]=="}")||(line[col-2]=="(" && line[col-1]==")")||(line[col-2]=='"' && line[col-1]=='"')||(line[col-2]=="[" && line[col-1]=="]")||(line[col-2]=="'" && line[col-1]=="'")||(line[col-2]=="`" && line[col-1]=="`")
+  return "\<BS>\<Del>"
+else 
+  return "\<BS>"
+ endif
+endf
